@@ -1,9 +1,9 @@
 import { Client } from '@notionhq/client';
-import NotionToMarkdown from 'notion-to-md';
+import { NotionToMarkdown } from 'notion-to-md';
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const n2m = new NotionToMarkdown({ notionClient: notion });
+const n2m = NotionToMarkdown({ notionClient: notion });
 
 export type Post = {
   id: string;
@@ -12,7 +12,6 @@ export type Post = {
   date: string;
 };
 
-// is_publishedがtrueのものだけ取得
 export const getAllPosts = async (): Promise<Post[]> => {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID!,
