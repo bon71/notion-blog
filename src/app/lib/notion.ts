@@ -1,9 +1,11 @@
 import { Client } from '@notionhq/client';
-import NotionToMarkdown from 'notion-to-md'; // ← ここを修正！
+import NotionToMarkdown from 'notion-to-md';
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const n2m = new NotionToMarkdown({ notionClient: notion }); // ← インスタンスをnewで作成
+
+// 修正: new を削除し、関数として呼び出す
+const n2m = NotionToMarkdown({ notionClient: notion });
 
 export type Post = {
   id: string;
