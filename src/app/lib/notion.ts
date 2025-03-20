@@ -3,7 +3,7 @@ import { notionToMarkdown } from 'notion-to-md';
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const n2m = NotionToMarkdown({ notionClient: notion });
+const n2m = notionToMarkdown({ notionClient: notion });
 
 export type Post = {
   id: string;
